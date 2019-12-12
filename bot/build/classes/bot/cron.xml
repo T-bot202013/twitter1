@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<cronentries>
+	<cron>
+		<url>/cron/bot</url>
+		<schedule>every 12 hour</schedule>
+		<timezone>Asia/Tokyo</timezone>
+
+	</cron>
+</cronentries>
