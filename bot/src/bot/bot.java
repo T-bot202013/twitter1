@@ -17,18 +17,28 @@ import twitter4j.auth.AccessToken;
 		private static String consumerSecret = "jAsrUiXbbx24DcPHFax1oJeCSw53DLzMqcc0lDbOaKBsdoJIhk";
 		private static String accessToken = "1196226134209228800-nd5OLsaSgLNNhMotyODXsASEogcA46";
 		private static String accessTokenSecret = "YREMOxLKU3iCcj3xeA4hyA5hzRzT95Y3M3wgxFG29sVwl";
-		private static String tweet = "準備中";
+		private String getTweet(){
+			String tweets[] = {
+					"現在準備中",
+					"ネタ不足",
+			};
+			int randint = (int)(Math.random()*tweets.length);
+			return tweets[randint];
+		}
 
 		public void main(HttpServletRequest req, HttpServletResponse resp)
 				throws IOException{
+			String message = getTweet();
 			Twitter twitter = new TwitterFactory().getInstance();
 			twitter.setOAuthConsumer(consumerKey, consumerSecret);
 			twitter.setOAuthAccessToken(new AccessToken(accessToken,accessTokenSecret));
 			try{
-				twitter.updateStatus(tweet);
+				twitter.updateStatus(message);
 				System.out.println("成功");
 			} catch(TwitterException e){
 				System.err.println("失敗"+e.getMessage());
 			}
 		}
 	}
+	
+	
